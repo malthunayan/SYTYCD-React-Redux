@@ -1,4 +1,4 @@
-import * as actionTypes from "../actions/actionTypes";
+import { FETCH_AUTHORS, FILTER_AUTHORS } from "../actions/actionTypes";
 
 const initialState = {
   authors: [],
@@ -16,10 +16,10 @@ const reducer = (state = initialState, action) => {
         loading: false
       };
 
-    case actionTypes.FILTER_AUTHORS:
+    case FILTER_AUTHORS:
       return {
         ...state,
-        filteredAuthors: state.authors.filter(author => {
+        filteredAuthors: state.filteredAuthors.filter(author => {
           return `${author.first_name} ${author.last_name}`
             .toLowerCase()
             .includes(action.payload);
