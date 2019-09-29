@@ -11,7 +11,7 @@ const reducer = (state = initialState, action) => {
     case FETCH_AUTHORS:
       return {
         ...state,
-        authors: state.authors.push(action.payload),
+        authors: state.authors.concat(action.payload),
         filteredAuthors: state.filteredAuthors.concat(action.payload),
         loading: false
       };
@@ -19,7 +19,7 @@ const reducer = (state = initialState, action) => {
     case FILTER_AUTHORS:
       return {
         ...state,
-        filteredAuthors: state.filteredAuthors.filter(author => {
+        filteredAuthors: state.authors.filter(author => {
           return `${author.first_name} ${author.last_name}`
             .toLowerCase()
             .includes(action.payload);
